@@ -33,7 +33,7 @@
 
 | カテゴリ | 技術・ライブラリ |
 |----------|----------------|
-| 言語 | Python 3.13 |
+| 言語 | Python 3.14 |
 | ブラウザ自動操作 | Selenium / ChromeDriver |
 | 通知 | LINE Messaging API |
 | データ管理 | pandas / CSV |
@@ -121,4 +121,3 @@ amazon-price-monitor/
 ## 📝 ライセンス
 
 MIT License
-SS
