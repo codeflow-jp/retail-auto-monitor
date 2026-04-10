@@ -115,7 +115,8 @@ class AmazonPriceMonitor:
 
         scope = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
         try:
-            creds = ServiceAccountCredentials.from_json_keyfile_name('secret_key.json', scope)
+            secret_key_path = os.path.join(self.base_dir, 'secret_key.json')
+            creds = ServiceAccountCredentials.from_json_keyfile_name(secret_key_path, scope)
             client = gspread.authorize(creds)
             # スプレッドシート名が正確に一致している必要があります
             sheet = client.open('Amazon監視データ').sheet1
@@ -158,7 +159,7 @@ class AmazonPriceMonitor:
 if __name__ == "__main__":
     MY_LINE_TOKEN = os.getenv("LINE_TOKEN")
     MY_LINE_USER_ID = os.getenv("LINE_USER_ID")
-    SEARCH_URL = "https://www.amazon.co.jp/s?k=%E3%82%B9%E3%82%A4%E3%83%83%E3%83%812"
+    SEARCH_URL = "https://www.amazon.co.jp/s?k=%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%EF%BC%92&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=PNFXO86G5SS4&sprefix=%E3%82%B9%E3%82%A4%E3%83%83%E3%83%812%2Caps%2C220&ref=nb_sb_noss_1"
     TARGET_PRICE = 58000
 
     monitor = AmazonPriceMonitor(threshold_price=TARGET_PRICE, line_token=MY_LINE_TOKEN, line_user_id=MY_LINE_USER_ID)
